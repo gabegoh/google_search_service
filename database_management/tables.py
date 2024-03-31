@@ -12,5 +12,5 @@ google_searches_table: Table = Table(
     Column("response", String, nullable=True),
     Column("status_code", Integer, nullable=False),
     Column("is_deleted", Boolean, nullable=False),
-    Column("created_at", DateTime, nullable=False)
+    Column("created_at", DateTime, nullable=False),
 )
