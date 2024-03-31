@@ -1233,6 +1233,17 @@ files = [
 ]
 
 [[package]]
+name = "types-retry"
+version = "0.9.9.4"
+description = "Typing stubs for retry"
+optional = false
+python-versions = "*"
+files = [
+    {file = "types-retry-0.9.9.4.tar.gz", hash = "sha256:e4731dc684b56b875d9746459ad665d3bc281a56b530acdf1c97730167799941"},
+    {file = "types_retry-0.9.9.4-py3-none-any.whl", hash = "sha256:f29760a9fe8b1fefe253e5fe6be7e4c0eba243932c600e0eccffb42a21d17765"},
+]
+
+[[package]]
 name = "types-toml"
 version = "0.10.8.20240310"
 description = "Typing stubs for toml"
@@ -1377,4 +1388,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11.0"
-content-hash = "50947c2020399acb9b8764bd858ab1d9d56c5144ce2d79518f2ed3d3f063de54"
+content-hash = "deb8ea3260dde2cc0a933cc6fd70c3f75cc00adc68050bed800ebd46bd1161a9"
