@@ -26,10 +26,10 @@ class PGEngine:
         host: str = db_config["host"]
         port: str = db_config["port"]
         database: str = db_config["database"]
-        user: str = db_config["user"]
-        password: str = db_config["password"]
+        user: str = db_config.get("user", "")
+        password: str = db_config.get("password", "")
         return (
             f"postgresql://{host}:{port}/{database}"
             if not user and not password
-            else f"sqlalchemy+psycopg2://{urllib.parse.quote(user)}:{urllib.parse.quote(password)}@{host}:{port}/{database}"
+            else f"postgresql://{urllib.parse.quote(user)}:{urllib.parse.quote(password)}@{host}:{port}/{database}"
         )

@@ -34,17 +34,18 @@ class GoogleSearchResponse(BaseModel):
         )
 
     def model_dump(
-            self,
-           *,
-           mode: Literal['json', 'python'] | str = 'python',
-           include: set[int] | set[str] | dict[int, Any] | dict[str, Any] | None = None,
-           exclude: set[int] | set[str] | dict[int, Any] | dict[str, Any] | None = None,
-           by_alias: bool = False,
-           exclude_unset: bool = False,
-           exclude_defaults: bool = False,
-           exclude_none: bool = False,
-           round_trip: bool = False,
-           warnings: bool = True) -> dict[str, Any]:
+        self,
+        *,
+        mode: Literal["json", "python"] | str = "python",
+        include: set[int] | set[str] | dict[int, Any] | dict[str, Any] | None = None,
+        exclude: set[int] | set[str] | dict[int, Any] | dict[str, Any] | None = None,
+        by_alias: bool = False,
+        exclude_unset: bool = False,
+        exclude_defaults: bool = False,
+        exclude_none: bool = False,
+        round_trip: bool = False,
+        warnings: bool = True
+    ) -> dict[str, Any]:
         serialized: dict[str, Any] = super().model_dump(
             mode=mode,
             include=include,
@@ -54,7 +55,9 @@ class GoogleSearchResponse(BaseModel):
             exclude_defaults=exclude_defaults,
             exclude_none=exclude_none,
             round_trip=round_trip,
-            warnings=warnings
+            warnings=warnings,
         )
-        serialized["created_at"] = serialized["created_at"].strftime("%Y-%m-%d %H:%M:%S")
+        serialized["created_at"] = serialized["created_at"].strftime(
+            "%Y-%m-%d %H:%M:%S"
+        )
         return serialized
