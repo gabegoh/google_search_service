@@ -19,7 +19,7 @@ class GoogleSearchDAO:
             "   search_id, "
             "   search_term, "
             "   response, "
-            "   status_coee, "
+            "   status_code, "
             "   is_deleted, "
             "   created_at "
             "FROM google_searches "
