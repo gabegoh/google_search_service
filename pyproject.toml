@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "google_search_service"
+readme = "README.md"
+version = "0.1.0"
+description = "A highly efficient async backend API service, for scraping google search engine into organized data, ready to be transformed"
+authors = [
+    "Gab <gabrielgohhq@gmail.com>"
+]
+maintainers = [
+    "Gab <gabrielgohhq@gmail.com>"
+]
+
+[tool.poetry.dependencies]
+python = "^3.11.0"      # Accepts python version 3.11.0 till < 4
+requests = "^2.31.0"    # 2.31.0 and above till < 3
+SQLAlchemy = "^2.0.29"  # 2.0.29 and above till < 3
+aiohttp = "^3.8.5"
+black = "^23.9.1"
+ruff = "^0.0.292"
+mypy = "^1.5.1"
+toml = "^0.10.2"
+psycopg2 = "^2.9.9"
+types-toml = "^0.10.8.7"
+pydantic = "2.4.2"
+alembic = "^1.12.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^8.1.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
