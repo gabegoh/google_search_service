@@ -15,15 +15,39 @@ A highly-efficient python backend API server to Google
 - `pyproject.toml` defines the dependencies this project uses, and makes it easy for us to install dependencies
 - `poetry.lock` locks the dependencies the team uses. This ensures the dependency versions are the same across all collaborators
 
+## Creating a virtual environment
+
+```commandline
+poetry shell
+```
+
+## Installing dependencies
+
+```commandline
+poetry install
+```
+
 ## (Optional) Code Formatter - `black`
 - Automatically formats source code in this project, to make it neat
+
+```commandline
+black .
+```
 
 ## (Optional) Linter - `ruff`
 - Catches code smells automatically in this project, to avoid fundamental mistakes
 
+```commandline
+ruff --fix .
+```
+
 ## (Optional) Type-checker - `mypy`
 - Catches trivial type errors which can be avoided even before running the project
 - This ensures our customers don't get bugs which could be avoided easily
+
+```commandline
+mypy .
+```
 
 ## Spinning up a PostgreSQL local database server
 
@@ -59,8 +83,6 @@ alembic upgrade head
 
 This will create the tables for you in your local postgresql database
 
-
-
 ## (Optional) Creating a new table with alembic
 
 ### Step 1: Define the new table in `database_management/tables.py`
@@ -74,3 +96,42 @@ This same file will be used to migrate databases locally, allowing your team mem
 ```commandline
 alembic revision --autogenerate -m "Your commit message"
 ```
+
+## Running the local server on Port 8080
+
+```commandline
+python main.py
+```
+
+## Making a sample request
+
+POST `http://localhost:8080/perform_search`
+
+Input JSON:
+
+```json
+{
+	"search_term": "coffee"
+}
+```
+
+Sample output:
+
+```commandline
+{
+	"search_id": "54cb9e17-8442-400a-9364-0b90c70cda93",
+	"search_term": "coffee",
+	"response": "some_le_big_html :D",
+	"status_code": 200,
+	"is_deleted": false,
+	"created_at": "2024-03-31 11:54:36"
+}
+```
+
+![Image](./images/sample_result.png)
+
+## TODOs:
+- [ ] Implement a HTML parser, to extract the search results from raw HTML
+  - [ ] This can be done with a simple ada model from the GPT3.5 series
+  - [ ] Alternative, to save costs (OpenAI credits are expensive), we can deploy a simple open sourced LLM to do so
+- We don't use a simple HTMLParser, as Google is notorious for making it's HTML difficult to parse with simple vanilla HTML scrapers (e.g with selenium-webdriver)
