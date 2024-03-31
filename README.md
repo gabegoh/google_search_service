@@ -83,6 +83,12 @@ alembic upgrade head
 
 This will create the tables for you in your local postgresql database
 
+## (Optional) Run unit tests
+
+```commandline
+pytest unit_tests
+```
+
 ## (Optional) Creating a new table with alembic
 
 ### Step 1: Define the new table in `database_management/tables.py`
@@ -135,3 +141,4 @@ Sample output:
   - [ ] This can be done with a simple ada model from the GPT3.5 series
   - [ ] Alternative, to save costs (OpenAI credits are expensive), we can deploy a simple open sourced LLM to do so
 - We don't use a simple HTMLParser, as Google is notorious for making it's HTML difficult to parse with simple vanilla HTML scrapers (e.g with selenium-webdriver)
+- [ ] Write integration tests for GoogleSearchDAO
