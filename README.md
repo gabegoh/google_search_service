@@ -24,3 +24,53 @@ A highly-efficient python backend API server to Google
 ## (Optional) Type-checker - `mypy`
 - Catches trivial type errors which can be avoided even before running the project
 - This ensures our customers don't get bugs which could be avoided easily
+
+## Spinning up a PostgreSQL local database server
+
+Install PostgreSQL@15 with brew
+
+```commandline
+brew install postgresql@15
+```
+
+Spin up PostgreSQl database server locally, with `brew services`
+
+```commandline
+brew services start postgresql@15
+```
+
+Connect to your local postgresql server
+
+```
+psql -d postgres
+```
+
+Create the database
+
+```sql
+CREATE DATABASE google_search_service
+```
+
+Use alembic database migration tool, to create the remaining tables
+
+```commandline
+alembic upgrade head
+```
+
+This will create the tables for you in your local postgresql database
+
+
+
+## (Optional) Creating a new table with alembic
+
+### Step 1: Define the new table in `database_management/tables.py`
+
+### Step 2: Generate the alembic upgrade script
+
+This generates a new file in `database_management/versions`
+
+This same file will be used to migrate databases locally, allowing your team members to easily replicate the same postgresql setup as everyone
+
+```commandline
+alembic revision --autogenerate -m "Your commit message"
+```
