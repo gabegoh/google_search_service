@@ -59,7 +59,6 @@ class GoogleSearchService:
         """
         Response for two steps:
         - Make the API call, get the response
-        - (TODO) Persist the response in PostgreSQL
         """
         response: GoogleSearchResponse
         try:
